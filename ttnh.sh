@@ -11,7 +11,7 @@ chmod +x wget
 chmod +x chroot
 echo "OK"
 echo "Downloading && Copying chroot..."
-wget https://images.kali.org/kalifs-arm64-minimal.tar.xz -O kali.tar.xz
+./wget https://images.kali.org/kalifs-arm64-minimal.tar.xz -O kali.tar.xz
 echo "Downloaded.."
 cp kali.tar.xz /data/local/nhsystem/kali.tar.xz
 echo "Copied..OK"
