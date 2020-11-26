@@ -39,8 +39,9 @@ YSSS~S%SSSSSP  YSSS~S%SSSSSP  .SS    SS.
                                           "
 echo -e "\e[34mTermux To Nethunter v1.0 by @Huntmix\e[39m"
 echo "Deleting previous chroot.."
-sudo rm -rf /data/local/nhterm/kali-arm64
-rm -f kali.tar.xz 
+sudo chmod +x /data/local/nhsystem/
+sudo rm -rf /data/local/nhsystem/kali-arm64/
+rm -rf kali.tar.xz
 rm -f kalifs-arm64-minimal.tar.xz
 sudo rm -f /data/local/nhsystem/kali.tar.xz
 echo "Downloading apps..."
@@ -83,10 +84,12 @@ YSSS~S%SSSSSP  YSSS~S%SSSSSP  .SS    SS.
      Y              Y                Y    
                                           "
 echo "Installation.."
-echo "Nethunter app:"
-sudo pm install nh.apk
 echo "Terminal app:"
+sudo pm uninstall com.offsec.nhterm
 sudo pm install term.apk
+echo "Nethunter app:"
+sudo pm uninstall com.offsec.nethunter
+sudo pm install nh.apk
 echo "Granting Permissions.."
 sudo pm grant com.offsec.nethunter android.permission.READ_EXTERNAL_STORAGE 
 sudo pm grant com.offsec.nethunter android.permission.WRITE_EXTERNAL_STORAGE 
@@ -102,6 +105,29 @@ sudo pm grant com.offsec.nhterm android.permission.WRITE_EXTERNAL_STORAGE
 rm nh.apk
 rm term.apk
 echo "Granted!"
+echo "Please open app and grant SU, then back.."
+echo "Opening.."
+sleep 5
+am start -n com.offsec.nethunter/com.offsec.nethunter.AppNavHomeActivity
+clear
+echo -e "\e[34msdSS_SSSSSSbs  sdSS_SSSSSSbs   .S    S.   
+YSSS~S%SSSSSP  YSSS~S%SSSSSP  .SS    SS.  
+     S%S            S%S       S%S    S%S  
+     S%S            S%S       S%S    S%S  
+     S&S            S&S       S%S SSSS%S  
+     S&S            S&S       S&S  SSS&S  
+     S&S            S&S       S&S    S&S  
+     S&S            S&S       S&S    S&S  
+     S*S            S*S       S*S    S*S  
+     S*S            S*S       S*S    S*S  
+     S*S            S*S       S*S    S*S  
+     S*S            S*S       SSS    S*S  
+     SP             SP               SP   
+     Y              Y                Y    
+                                          "
+echo "Grant SU to nethunter app!"
+sleep 10
+sudo am kill all com.offsec.nethunter
 echo "Copying chroot..."
 sudo cp kali.tar.xz /data/local/nhsystem/
 echo "OK"
@@ -110,24 +136,14 @@ cd /data/local/nhsystem/
 sudo busybox tar xf kali.tar.xz
 sudo chmod +x /data/local/nhsystem/
 echo "Installed!"
+echo "Deleting cache..."
+rm /data/local/nhsystem/kali.tar.xz
+echo "OK"
 sleep 1
 echo -e "Starting Nethunter in 8 seconds.. \nType ./nh to start Nethunter in Termux!"
 cd $HOME
 echo "sudo /data/data/com.offsec.nethunter/files/scripts/bootkali_bash" > nh
 chmod +x nh
 sleep 8 
+echo -e "Script maded by @Huntmix (TG) \nDonate: https://huntmix.ru/rekv.html \nProblems? Pm me or open issues!"
 ./nh
-
-
-
-
-
-
-
-
-
-
-
-
-
-
