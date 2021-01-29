@@ -176,7 +176,7 @@ elif [ $ch -eq 2 ]; then
     echo "Installed!"
 elif [ $ch -eq 3 ]; then
     echo -e "Starting Chroot Downloading(1-120 min)\n \e[41mAll works, just wait..\e[49m"
-    busybox wget http://images.kali.org/kalifs-arm64-minimal.tar.xz -O kali.tar.xz
+    busybox wget http://images.kali.org/kalifs-arm64-full.tar.xz -O kali.tar.xz
     echo "Done"
     sleep 1
     clear
